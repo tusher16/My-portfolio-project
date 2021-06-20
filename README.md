@@ -1,7 +1,7 @@
 
 # My portfolio project website using django
 
-Based on this [Medium tutorial](https://tusher16.medium.com/make-a-simple-django-3-2-portfolio-project-as-data-scientist-part-1-72dfa4992b85)
+Full Blog on this [Medium tutorial](https://tusher16.medium.com/make-a-simple-django-3-2-portfolio-project-as-data-scientist-part-1-72dfa4992b85)
 
 ## Getting Started
 
@@ -15,9 +15,9 @@ Based on this [Medium tutorial](https://tusher16.medium.com/make-a-simple-django
    ```
 3. Database migration
   
-  ```bash
-  python3 manage.py migrate
-  ```
+   ```bash
+   python3 manage.py migrate
+   ```
   
 5. Start it up
 
