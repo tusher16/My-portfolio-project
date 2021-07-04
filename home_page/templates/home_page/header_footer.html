@@ -1,0 +1,133 @@
+{% load static %}
+
+{% load active_link_tags %}
+
+
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+	<title>DevCard - Bootstrap 4 vCard &amp; Portfolio Template For Developers</title>
+	
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="DevCard Bootstrap 4 Template">
+	<meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+
+
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"> 
+	
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+	
+	<!-- FontAwesome JS -->
+    <script defer src="{% static 'fontawesome/js/all.js' %}"></script>
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{% static 'plugins/tiny-slider/tiny-slider.css' %}">
+
+	<!-- Theme CSS -->  
+	<link id="theme-style" rel="stylesheet" href="{% static 'css/theme-1.css' %}">
+
+</head> 
+
+<body>
+	
+	<header class="header text-center">	    
+		<div class="force-overflow">
+			<h1 class="blog-name pt-lg-4 mb-0"><a href="{% url 'index' %}">Simon Doe</a></h1>
+			
+			<nav class="navbar navbar-expand-lg navbar-dark" >
+				
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div id="navigation" class="collapse navbar-collapse flex-column" >
+					<div class="profile-section pt-3 pt-lg-0">
+						<img class="profile-image mb-3 rounded-circle mx-auto" src="{% static 'images/profile.png' %}" alt="image" >			
+						
+						<div class="bio mb-3">Hi, my name is Simon Doe and I'm a senior software engineer. Welcome to my personal website!</div><!--//bio-->
+						<ul class="social-list list-inline py-2 mx-auto">
+							<li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
+						</ul><!--//social-list-->
+						<hr> 
+					</div><!--//profile-section-->
+					
+					<ul class="navbar-nav flex-column text-left">
+						{% url 'index' as url %}
+						<li class="nav-item {% if request.path == url %}active{% endif %}">
+							<a class="nav-link" href="{{ url }}"><i class="fas fa-user fa-fw mr-2"></i>About Me<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item {% active_link 'portfolio' 'active' %}">
+							<a class="nav-link" href="{% url 'portfolio' %}"><i class="fas fa-laptop-code fa-fw mr-2"></i>Portfolio</a>
+						</li>
+						
+						<li class="nav-item {% active_link 'resume' 'active' %}">
+							<a class="nav-link" href="{% url 'resume' %}"><i class="fas fa-file-alt fa-fw mr-2"></i>Resume</a>
+						</li>
+						<li class="nav-item {% active_link 'blog' 'active' %}">
+							<a class="nav-link " href="{% url 'blog' %}"><i class="fas fa-blog fa-fw mr-2"></i>Blog</a>
+						</li>
+						<li class="nav-item {% active_link 'contact' 'active' %}">
+							<a class="nav-link " href="{% url 'contact' %}"><i class="fas fa-envelope-open-text fa-fw mr-2"></i>Contact</a>
+						</li>
+						
+					</ul>
+					
+					<div class="my-2">
+						<a class="btn btn-primary" href="{% url 'contact' %}" target="_blank"><i class="fas fa-paper-plane mr-2"></i>Hire Me</a>
+					</div>
+					
+	
+					<div class="dark-mode-toggle text-center w-100">
+						<hr class="mb-4">
+					    <h4 class="toggle-name mb-3 "><i class="fas fa-adjust mr-1"></i>Dark Mode</h4>
+					    
+					    <input class="toggle" id="darkmode" type="checkbox">
+					    <label class="toggle-btn mx-auto mb-0" for="darkmode"></label>
+					    
+					</div><!--//dark-mode-toggle-->
+					
+				</div>
+			</nav>
+		</div><!--//force-overflow-->
+	</header>
+
+
+	{% block content %}
+
+
+
+
+    {% endblock content %}
+
+
+    <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
+	
+
+	<!-- Javascript -->          
+	<script src="{% static 'plugins/jquery-3.4.1.min.js' %}"></script>
+	<script src="{% static 'plugins/popper.min.js' %}"></script> 
+	<script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+	
+	<script src="{% static 'plugins/tiny-slider/min/tiny-slider.js' %}"></script>
+	<script src="{% static 'js/testimonials.js' %}"></script>
+	<script src="{% static 'js/resume.js' %}"></script>
+
+
+	<!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+	<script src="{% static 'js/demo/style-switcher.js' %}"></script>  
+	
+	<!-- Dark Mode -->
+	<script src="{% static 'plugins/js-cookie.min.js' %}"></script>
+	<script src="{% static 'js/dark-mode.js' %}"></script>   
+	
+	
+</body>
+</html> 

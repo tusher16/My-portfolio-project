@@ -1,0 +1,38 @@
+{% extends 'home_page/header_footer.html' %}
+
+{% load static %}
+
+
+{% block content %}
+	
+	<div class="main-wrapper">
+		<section class="cta-section theme-bg-light py-5">
+			<div class="container text-center single-col-max-width">
+				<h2 class="heading mb-3">Online Resume</h2>
+				<a class="btn btn-primary" href="https://docs.google.com/document/d/1emG6bTNxPESj8jXsKY-FnH6JJi3HI6jrxPs06Uz6VIk/export?format=pdf" target="_blank"><i class="fas fa-file-pdf mr-2"></i>Download PDF Version</a>
+				
+				
+			</div><!--//container-->
+		</section>
+
+			<div class="container px-3 px-lg-5 embed-responsive embed-responsive-16by9 resume-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+									  
+					<iframe class="embed-responsive-item" src="https://docs.google.com/document/d/e/2PACX-1vQsDLzAFQXMrVtri6qIKfprSpfm_yp29A7k5pgYtYxe-y7oF5-rOhU43DcX26101GuJk2l_m249yQih/pub?embedded=true" height="100%"></iframe>
+
+			</div>
+
+
+
+					
+				</div><!--//container-->
+				
+				<footer class="footer text-center py-4">
+					<small class="copyright">Template Copyright &copy; <a href="https://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a></small>
+				</footer>
+				
+			</div><!--//main-wrapper-->
+ 
+
+
+
+{% endblock content %}
