@@ -6,14 +6,18 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-	<title>DevCard - Bootstrap 4 vCard &amp; Portfolio Template For Developers</title>
+	{% for My_profile_nav in My_profile_nav_object %}
+
+	<title>{{ My_profile_nav.name }}</title>
+
+	
 	
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="DevCard Bootstrap 4 Template">
-	<meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+	<meta name="description" content="{{ My_profile_nav.name }}">
+	<meta name="author" content="{{ My_profile_nav.name }}">
 
 
 	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"> 
@@ -36,7 +40,7 @@
 	
 	<header class="header text-center">	    
 		<div class="force-overflow">
-			<h1 class="blog-name pt-lg-4 mb-0"><a href="{% url 'index' %}">Simon Doe</a></h1>
+			<h1 class="blog-name pt-lg-4 mb-0"><a href="{% url 'index' %}">{{ My_profile_nav.name }}</a></h1>
 			
 			<nav class="navbar navbar-expand-lg navbar-dark" >
 				
@@ -46,15 +50,15 @@
 				
 				<div id="navigation" class="collapse navbar-collapse flex-column" >
 					<div class="profile-section pt-3 pt-lg-0">
-						<img class="profile-image mb-3 rounded-circle mx-auto" src="{% static 'images/profile.png' %}" alt="image" >			
+						<img class="profile-image mb-3 rounded-circle mx-auto" src="{{ My_profile_nav.side_profile_pic.url }}" alt="image" >			
 						
-						<div class="bio mb-3">Hi, my name is Simon Doe and I'm a senior software engineer. Welcome to my personal website!</div><!--//bio-->
+						<div class="bio mb-3">{{ My_profile_nav.short_intro }}</div><!--//bio  {% static 'images/profile.png' %} -->
 						<ul class="social-list list-inline py-2 mx-auto">
-							<li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
+							<li class="list-inline-item"><a href="{{ My_profile_nav.facebook_link }}" target="_blank"><i class="fab fa-facebook-f fa-fw"></i></a></li>
+							<li class="list-inline-item"><a href="{{ My_profile_nav.linkedin_link }}" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+							<li class="list-inline-item"><a href="{{ My_profile_nav.github_link }}" target="_blank"><i class="fab fa-github-alt fa-fw"></i></a></li>
+							<li class="list-inline-item"><a href="{{ My_profile_nav.researchgate_link }}" target="_blank"><i class="fab fa-researchgate fa-fw"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ My_profile_nav.google_sch_link }}" target="_blank"><i class="fab fa-google fa-fw"></i></a></li>
 						</ul><!--//social-list-->
 						<hr> 
 					</div><!--//profile-section-->
@@ -99,6 +103,7 @@
 		</div><!--//force-overflow-->
 	</header>
 
+	{% endfor %}
 
 	{% block content %}
 
