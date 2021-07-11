@@ -46,13 +46,14 @@ class My_profile_nav(models.Model):
         unique=True, 
         blank=True
     )
-
-    
-    
+    my_kaggle_link = models.URLField(("my_kaggle_link"), max_length=128, 
+        db_index=True, 
+        unique=True, 
+        blank=True
+    )
 
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
-    
    
     def __str__(self):
         return self.name
