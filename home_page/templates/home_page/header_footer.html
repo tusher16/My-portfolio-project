@@ -73,6 +73,9 @@
 							<a class="nav-link" href="{% url 'portfolio' %}"><i class="fas fa-laptop-code fa-fw mr-2"></i>Portfolio</a>
 						</li>
 						
+						<li class="nav-item {% active_link 'research_papers' 'active' %}">
+							<a class="nav-link" href="{% url 'research_papers' %}"><i class="fas fa-scroll fa-fw mr-2"></i>Research Papers</a>
+						</li>
 						<li class="nav-item {% active_link 'resume' 'active' %}">
 							<a class="nav-link" href="{% url 'resume' %}"><i class="fas fa-file-alt fa-fw mr-2"></i>Resume</a>
 						</li>
@@ -117,7 +120,9 @@
     <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
 	
 
-	<!-- Javascript -->          
+	<!-- Javascript -->   
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>       
 	<script src="{% static 'plugins/jquery-3.4.1.min.js' %}"></script>
 	<script src="{% static 'plugins/popper.min.js' %}"></script> 
 	<script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>

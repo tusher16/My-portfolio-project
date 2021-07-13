@@ -5,7 +5,7 @@
 
 {% block content %}
 	
-	{% for My_profile_nav in My_profile_nav_object %}
+	{% for My_profile_home in My_profile_home_object %}
 	<div class="main-wrapper">
 		
 		<section class="about-me-section p-3 p-lg-5 theme-bg-light">
@@ -13,18 +13,18 @@
 				<div class="profile-teaser media flex-column flex-lg-row">
 					
 					<div class="media-body">
-						<h2 class="name font-weight-bold mb-1">{{ My_profile_nav.name }}</h2>
+						<h2 class="name font-weight-bold mb-1">{{ My_profile_home.full_name }}</h2>
 
 
-						<div class="tagline mb-3">Senior Software Engineer</div>
-						<div class="bio mb-4">I'm a software engineer specialised in frontend and backend development for complex scalable web apps. I write about software development on <a class="link-on-bg" href="{% url 'blog' %}">my blog</a>. Want to know how I may help your project? Check out my project <a class="link-on-bg" href="{% url 'portfolio' %}">portfolio</a> and <a class="link-on-bg" href="{% url 'resume' %}">online resume</a>.
+						<div class="tagline mb-3">{{ My_profile_home.my_job_status }}</div>
+						<div class="bio mb-4">{{ My_profile_home.mid_intro }} I write about my projects on <a class="link-on-bg" href="{% url 'blog' %}">my blog</a>. Want to know how I have created my projects? Check out my projects <a class="link-on-bg" href="{% url 'portfolio' %}">portfolio</a> and <a class="link-on-bg" href="{% url 'resume' %}">online resume</a>.
 						</div><!--//bio-->
 						<div class="mb-4">
 							<a class="btn btn-primary mr-2 mb-3" href="{% url 'portfolio' %}"><i class="fas fa-arrow-alt-circle-right mr-2"></i><span class="d-none d-md-inline">View</span> Portfolio</a>
 							<a class="btn btn-secondary mb-3" href="{% url 'resume' %}"><i class="fas fa-file-alt mr-2"></i><span class="d-none d-md-inline">View</span> Resume</a>
 						</div>
 					</div><!--//media-body-->
-					<img class="profile-image mb-3 mb-lg-0 ml-lg-5 mr-md-0" src="{% static 'images/profile-lg.jpg' %}" alt="">
+					<img class="profile-image mb-3 mb-lg-0 ml-lg-5 mr-md-0" src="{{ My_profile_home.side_profile_pic.url }}" alt="">
 				</div>
 			</div>
 		</section><!--//about-me-section-->
@@ -32,9 +32,11 @@
 		<section class="overview-section p-3 p-lg-5">
 			<div class="container">
 				<h2 class="section-title font-weight-bold mb-3">What I do</h2>
-				<div class="section-intro mb-5">I have more than 10 years' experience building software for clients all over the world. Below is a quick overview of my main technical skill sets and technologies I use. Want to find out more about my experience? Check out my <a href="resume.html">online resume</a> and <a href="portfolio.html">project portfolio</a>.</div>
+				<div class="section-intro mb-5">{{ My_profile_home.what_i_do }} Want to find out more about my experience? Check out my <a href="{% url 'resume' %}">online resume</a> and <a href="{% url 'portfolio' %}">project portfolio</a>.</div>
 				
 		</section>
+
+		{% endfor %}
 		
 		<div class="container"><hr></div>
 		
@@ -44,17 +46,20 @@
 			<div class="container">
 				<h2 class="section-title font-weight-bold mb-5">Featured Projects</h2>
 				<div class="row">
+
+					{% for My_portfolio in My_portfolio_object %}
+
 					<div class="col-md-6 mb-5">
 						<div class="card project-card">
 							<div class="row no-gutters">
 								<div class="col-lg-4 card-img-holder">
-									<img src="{% static 'images/project/project-1.jpg' %}" class="card-img" alt="image">
+									<img src="{{ My_portfolio.portfolio_image.url }}" class="card-img" alt="image">
 								</div>
 								<div class="col-lg-8">
 									<div class="card-body">
-										<h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-										<p class="card-text">Project intro lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-										<p class="card-text"><small class="text-muted">Client: Google</small></p>
+										<h5 class="card-title"><a href="{{ My_portfolio.portfolio_medium_link }}" class="theme-link" target="_blank">{{ My_portfolio.portfolio_title }}</a></h5>
+										<p class="card-text">{{ My_portfolio.portfolio_short_dis }}</p>
+										<div class="meta mb-1"><span class="date">{{ My_portfolio.portfolio_publish_time }}</span><span class="time">{{ My_portfolio.portfolio_readtime }}</span></span></div>
 									</div>
 								</div>
 							</div>
@@ -63,106 +68,24 @@
 								<a class="link-mask-link" href="{% url 'portfolio' %}"></a>
 								<div class="link-mask-text">
 									<div class="row btn-group">
-										<a href="{% url 'portfolio' %}">
+										<a href="{{ My_portfolio.portfolio_medium_link }}" target="_blank">
 									  		<button type="button" class="btn btn-primary"> <i class="fab fa-medium"></i> Medium</button>
 									  	</a>
-									  	<a href="{% url 'portfolio' %}">
+									  	<a href="{{ My_portfolio.portfolio_git_link }}" target="_blank">
 									  		<button type="button" class="btn btn-secondary"> <i class="fab fa-github-alt"></i> Github</button>
 									  	</a>
 									</div>
 								</div>
 							</div>
 
-							<!--<div class="link-mask">
-								<a class="link-mask-link" href="project.html"></a>
-								<div class="link-mask-text">
-									<a class="btn btn-primary btn-sm btn-block" href="project.html">
-										<i class="fab fa-medium"></i> view Case Study
-									</a>
-									<a class="btn btn-secondary btn-sm btn-block" href="project.html">
-										<i class="fab fa-github-alt"></i> View Git project
-									</a>
-								</div>
-							</div>//link-mask-->
+						</div><!--//card-->
+					</div><!--//col  -->
 
+					{% endfor %}
 
-
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-6 mb-5">	
-						<div class="card project-card">
-							<div class="row no-gutters">
-								<div class="col-lg-4 card-img-holder">
-									<img src="{% static 'images/project/project-2.jpg' %}" class="card-img" alt="image">
-								</div>
-								<div class="col-lg-8">
-									<div class="card-body">
-										<h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-										<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-										<p class="card-text"><small class="text-muted">Client: Dropbox</small></p>
-									</div>
-								</div>
-							</div>
-							<div class="link-mask">
-								<a class="link-mask-link" href="project.html"></a>
-								<div class="link-mask-text">
-									<a class="btn btn-secondary" href="project.html">
-										<i class="fas fa-eye mr-2"></i>View Case Study
-									</a>
-								</div>
-							</div><!--//link-mask-->
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-6 mb-5">
-						<div class="card project-card">
-							<div class="row no-gutters">
-								<div class="col-lg-4 card-img-holder">
-									<img src="{% static 'images/project/project-3.jpg' %}" class="card-img" alt="image">
-								</div>
-								<div class="col-lg-8">
-									<div class="card-body">
-										<h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-										<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-										<p class="card-text"><small class="text-muted">Client: Google</small></p>
-									</div>
-								</div>
-							</div>
-							<div class="link-mask">
-								<a class="link-mask-link" href="project.html"></a>
-								<div class="link-mask-text">
-									<a class="btn btn-secondary" href="project.html">
-										<i class="fas fa-eye mr-2"></i>View Case Study
-									</a>
-								</div>
-							</div><!--//link-mask-->
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-6 mb-5">
-						<div class="card project-card">
-							<div class="row no-gutters">
-								<div class="col-lg-4 card-img-holder">
-									<img src="{% static 'images/project/project-4.jpg' %}" class="card-img" alt="image">
-								</div>
-								<div class="col-lg-8">
-									<div class="card-body">
-										<h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-										<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-										<p class="card-text"><small class="text-muted">Client: Uber</small></p>
-									</div>
-								</div>
-							</div>
-							<div class="link-mask">
-								<a class="link-mask-link" href="project.html"></a>
-								<div class="link-mask-text">
-									<a class="btn btn-secondary" href="project.html">
-										<i class="fas fa-eye mr-2"></i>View Case Study
-									</a>
-								</div>
-							</div><!--//link-mask-->
-						</div><!--//card-->
-					</div><!--//col-->
+					
 				</div><!--//row-->
-				<div class="text-center py-3"><a href="portfolio.html" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right mr-2"></i>View Portfolio</a></div>
+				<div class="text-center py-3"><a href="{% url 'portfolio' %}" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right mr-2"></i>View Portfolio</a></div>
 				
 			</div><!--//container-->
 		</section><!--//featured-section-->
@@ -173,50 +96,31 @@
 			<div class="container">
 				<h2 class="section-title font-weight-bold mb-5">Featured Research</h2>
 				<div class="row">
+
+					{% for My_researche in My_research_object %}
+
 					<div class="col-md-4 mb-5">
 						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-1.jpg" alt="image">
+							<img class="card-img-top" src="{{ My_researche.research_image.url }}" alt="image">
 							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">Top 3 JavaScript Frameworks</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
+								<h5 class="card-title"><a class="theme-link" href="{{ My_researche.research_readmore_link }}" target="_blank">{{ My_researche.research_title }}</a></h5>
+								<p class="card-text">{{ My_researche.research_short_dis }}</p>
+								<p class="mb-0"><a class="more-link" href="{{ My_researche.research_readmore_link }}" target="_blank">Read more &rarr;</a></p>
 								
 							</div>
 							<div class="card-footer">
-								<small class="text-muted">Published a week ago</small>
-								
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-4 mb-5">
-						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-2.jpg" alt="image">
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">About Remote Working</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published a week ago</small>
+								<small class="text-muted"><a href="{{ My_researche.research_publication_link }}" target="_blank">{{ My_researche.research_published_by }}</a></small>
 								
 							</div>
 						</div><!--//card-->
 					</div><!--//col-->
-					<div class="col-md-4 mb-5">
-						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-3.jpg" alt="image">
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">A Guide to Becoming a Full-Stack Developer</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published 3 weeks ago</small>
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
+
+					{% endfor %}
+
+					
+					
 				</div><!--//row-->
-				<div class="text-center py-3"><a href="blog-home.html" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right mr-2"></i>View Blog</a></div>
+				<div class="text-center py-3"><a href="{% url 'research_papers' %}" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right mr-2"></i>View Papers</a></div>
 			</div><!--//container-->
 			
 		</section><!--//latest-blog-section-->
@@ -225,49 +129,30 @@
 			<div class="container">
 				<h2 class="section-title font-weight-bold mb-5">Latest Blog Posts</h2>
 				<div class="row">
+
+					{% for My_blog in My_blog_object %}
+
 					<div class="col-md-4 mb-5">
 						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-1.jpg" alt="image">
+							<img class="card-img-top" src="{{ My_blog.blog_image.url }}" alt="image">
 							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">Top 3 JavaScript Frameworks</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
+								<h5 class="card-title"><a class="theme-link" href="{{ My_blog.blog_medium_link }}" target="_blank">{{ My_blog.blog_title }}</a></h5>
+								<p class="card-text">{{ My_blog.blog_short_dis }}</p>
+								<p class="mb-0"><a class="more-link" href="{{ My_blog.blog_medium_link }}" target="_blank">Read more &rarr;</a></p>
 								
 							</div>
 							<div class="card-footer">
-								<small class="text-muted">Published 2 days ago</small>
+								<small class="text-muted">{{ My_blog.blog_publish_time }} &#8226;</small>
+								<small  class="text-muted">{{ My_blog.blog_readtime }}</small>
 							</div>
 						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-4 mb-5">
-						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-2.jpg" alt="image">
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">About Remote Working</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published a week ago</small>
-								
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-4 mb-5">
-						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-3.jpg" alt="image">
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">A Guide to Becoming a Full-Stack Developer</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published 3 weeks ago</small>
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
+					</div><!--//col -->
+
+					{% endfor %}
+					
+					
 				</div><!--//row-->
-				<div class="text-center py-3"><a href="blog-home.html" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right mr-2"></i>View Blog</a></div>
+				<div class="text-center py-3"><a href="{% url 'blog' %}" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right mr-2"></i>View Blog</a></div>
 			</div><!--//container-->
 			
 		</section><!--//latest-blog-section-->
@@ -278,138 +163,44 @@
 				
 				<div class="testiomonial-carousel-container">
 					<div class="testimonial-carousel  tiny-slider">
-	                    <div class="item">
+	                    
+						{% for test in test_list %}
+						
+						<div class="item">
 							<div class="item-inner">
 								<div class="quote-holder">
 									<blockquote class="quote-content">
-										Simon is a brilliant software engineer! Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis.
+										{{ test.test_details }}
 									</blockquote>
 									<i class="fas fa-quote-left"></i>
 								</div><!--//quote-holder-->
 								<div class="source-holder">
 									<div class="source-profile">
-										<img src="{% static 'images/clients/profile-1.png' %}" alt="image"/>
+										<img src="{{ test.test_profile_pic.url }}" alt="image"/>
 									</div>
 									<div class="meta">
-										<div class="name">Brandon James</div>
-										<div class="info">Project Manager, Google</div>
+										<div class="name">{{ test.test_name }}</div>
+										<div class="info">{{ test.test_job_status }}</div>
 									</div>
 								</div>
 							</div><!--//item-inner-->
 						</div><!--//item-->
-						
-						<div class="item">
-							<div class="item-inner">
-								<div class="quote-holder">
-									<blockquote class="quote-content">
-										Simon is a brilliant software engineer! Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis.
-									</blockquote>
-									<i class="fas fa-quote-left"></i>
-								</div><!--//quote-holder-->
-								<div class="source-holder">
-									<div class="source-profile">
-										<img src="{% static 'images/clients/profile-2.png' %}" alt="image"/>
-									</div>
-									<div class="meta">
-										<div class="name">Kate Sanders</div>
-										<div class="info">Project Manager, Uber</div>
-									</div>
-								</div>
-							</div><!--//item-inner-->
-						</div><!--//item-->
-						
-						<div class="item">
-							<div class="item-inner">
-								<div class="quote-holder">
-									<blockquote class="quote-content">
-										Simon is a brilliant software engineer! Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis.
-									</blockquote>
-									<i class="fas fa-quote-left"></i>
-								</div><!--//quote-holder-->
-								<div class="source-holder">
-									<div class="source-profile">
-										<img src="{% static 'images/clients/profile-3.png' %}" alt="image"/>
-									</div>
-									<div class="meta">
-										<div class="name">James Lee</div>
-										<div class="info">Product Manager, Amazon</div>
-									</div>
-								</div>
-						    </div><!--//item-inner-->
-						</div><!--//item-->
-						
-						<div class="item">
-							<div class="item-inner">
-								<div class="quote-holder">
-									<blockquote class="quote-content">
-										Simon is a brilliant software engineer! Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis.
-									</blockquote>
-									<i class="fas fa-quote-left"></i>
-								</div><!--//quote-holder-->
-								<div class="source-holder">
-									<div class="source-profile">
-										<img src="{% static 'images/clients/profile-4.png' %}" alt="image"/>
-									</div>
-									<div class="meta">
-										<div class="name">James Lee</div>
-										<div class="info">Product Manager, Amazon</div>
-									</div>
-								</div>
-						    </div><!--//item-inner-->
-						</div><!--//item-->
-						
-						<div class="item">
-							<div class="item-inner">
-								<div class="quote-holder">
-									<blockquote class="quote-content">
-										Simon is a brilliant software engineer! Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis.
-									</blockquote>
-									<i class="fas fa-quote-left"></i>
-								</div><!--//quote-holder-->
-								<div class="source-holder">
-									<div class="source-profile">
-										<img src="{% static 'images/clients/profile-5.png' %}" alt="image"/>
-									</div>
-									<div class="meta">
-										<div class="name">Olivia White</div>
-										<div class="info">Product Manager, Dropbox</div>
-									</div>
-								</div>
-						    </div><!--//item-inner-->
-						</div><!--//item-->
-						
-						<div class="item">
-							<div class="item-inner">
-								<div class="quote-holder">
-									<blockquote class="quote-content">
-										Simon is a brilliant software engineer! Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis.
-									</blockquote>
-									<i class="fas fa-quote-left"></i>
-								</div><!--//quote-holder-->
-								<div class="source-holder">
-									<div class="source-profile">
-										<img src="{% static 'images/clients/profile-6.png' %}" alt="image"/>
-									</div>
-									<div class="meta">
-										<div class="name">Samuel Reyes</div>
-										<div class="info">CTO, StartupHub</div>
-									</div>
-								</div>
-						    </div><!--//item-inner-->
-						</div><!--//item-->
+
+						{% endfor %}
+
+
 					</div><!--//testimonial-carousel-->	
 				</div><!--//testimonial-carousel-container-->	
 			</div><!--//container-->
 		</section><!--//testimonials-section-->
 		
-		<div class="container"><hr></div>
-
+		
 		<footer class="footer text-center py-4">
 			<small class="copyright">Template Copyright &copy; <a href="https://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a></small>
 		</footer>
 		
 	</div><!--//main-wrapper-->
-	{% endfor %}
+	
 
 	
 {% endblock content %}
