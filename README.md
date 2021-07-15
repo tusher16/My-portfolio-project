@@ -2,6 +2,7 @@
 # My portfolio project website using django
 
 Full Blog on this [Medium tutorial](https://tusher16.medium.com/make-a-simple-django-3-2-portfolio-project-as-data-scientist-part-1-72dfa4992b85)
+Live at: https://www.tusher16.com
 
 ## Getting Started
 
