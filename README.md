@@ -17,6 +17,9 @@ Live at: https://www.tusher16.com
 3. Database migration
   
    ```bash
+   
+   python3 manage.py makemigrations
+   
    python3 manage.py migrate
    ```
   
@@ -25,3 +28,4 @@ Live at: https://www.tusher16.com
    ```bash
    python3 manage.py runserver
    ```
+need to create superuser and add data to our database.
