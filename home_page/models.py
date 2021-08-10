@@ -159,6 +159,12 @@ class My_portfolio(models.Model):
         blank=True
     )
 
+    portfolio_live_link = models.URLField(("portfolio_live_link"), max_length=128, 
+        db_index=True, 
+        unique=False, 
+        blank=True
+    )
+
     Featured = models.IntegerField(choices=STATUS, default=0)
     
 

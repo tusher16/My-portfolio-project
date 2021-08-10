@@ -66,13 +66,19 @@
 
 							<div class="link-mask">
 								<a class="link-mask-link" href="{% url 'portfolio' %}"></a>
-								<div class="link-mask-text">
+								<div class="link-mask-text" >
 									<div class="row btn-group">
 										<a href="{{ My_portfolio.portfolio_medium_link }}" target="_blank">
-									  		<button type="button" class="btn btn-primary"> <i class="fab fa-medium"></i> Medium</button>
+									  		<button type="button" class="btn btn-primary" style> <i class="fab fa-medium"></i> Medium</button>
 									  	</a>
+										  
 									  	<a href="{{ My_portfolio.portfolio_git_link }}" target="_blank">
 									  		<button type="button" class="btn btn-secondary"> <i class="fab fa-github-alt"></i> Github</button>
+									  	</a>
+										  	
+										<a href="{{ My_portfolio.portfolio_live_link }}" target="_blank">
+										<button type="button" class="btn btn-primary"> <i class="fas fa-laptop-code"></i> Live Project</button>
+											
 									  	</a>
 									</div>
 								</div>
@@ -125,8 +131,13 @@
 			
 		</section><!--//latest-blog-section-->
 
+
+		
+
 		<section class="latest-blog-section p-3 p-lg-5">
-			<div class="container">
+		
+			<div class="container"><hr>
+			<br>
 				<h2 class="section-title font-weight-bold mb-5">Latest Blog Posts</h2>
 				<div class="row">
 
@@ -157,8 +168,24 @@
 			
 		</section><!--//latest-blog-section-->
 
+		<section class="github section latest-blog-section p-3 p-lg-5">
+			<div class="container"><hr>
+			<br>
+			<h2 class="section-title font-weight-bold mb-5">My GitHub</h2>
+			<p>My GitHub Contribution Graph <a href="https://github.com/tusher16" target="_blank">Tusher16</a> Git profile. 
+                        
+                    <div class="calendar">
+    				<!-- Loading stuff -->
+						Loading the data just for you.
+					</div>
+			</div>
+        </section><!--//section-->
+
+		<br>
+
 		<section class="testimonials-section p-3 p-lg-5">
-			<div class="container">
+			<div class="container"><hr>
+			<br>
 				<h2 class="section-title font-weight-bold mb-5">Testimonials</h2>
 				
 				<div class="testiomonial-carousel-container">
@@ -179,7 +206,7 @@
 										<img src="{{ test.test_profile_pic.url }}" alt="image"/>
 									</div>
 									<div class="meta">
-										<div class="name">{{ test.test_name }}</div>
+										<div class="name"><b>{{ test.test_name }}</b></div>
 										<div class="info">{{ test.test_job_status }}</div>
 									</div>
 								</div>
@@ -193,6 +220,10 @@
 				</div><!--//testimonial-carousel-container-->	
 			</div><!--//container-->
 		</section><!--//testimonials-section-->
+		<br>
+		
+
+			
 		
 		
 		<footer class="footer text-center py-4">

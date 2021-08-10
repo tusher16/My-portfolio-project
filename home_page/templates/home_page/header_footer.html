@@ -34,6 +34,8 @@
 	<!-- Theme CSS -->  
 	<link id="theme-style" rel="stylesheet" href="{% static 'css/theme-1.css' %}">
 
+	<link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
+
 </head> 
 
 <body>
@@ -122,11 +124,26 @@
 
 	<!-- Javascript -->   
 
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>       
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>   
+
+	<script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+	
+	    
 	<script src="{% static 'plugins/jquery-3.4.1.min.js' %}"></script>
 	<script src="{% static 'plugins/popper.min.js' %}"></script> 
 	<script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
-	
+	<script src="{% static 'js/main.js' %}"></script>
+
+	<script>
+					
+					GitHubCalendar(".calendar", "tusher16");
+
+					// or enable responsive functionality:
+					GitHubCalendar(".calendar", "tusher16", { responsive: true });
+
+					
+	</script>
+
 	<script src="{% static 'plugins/tiny-slider/min/tiny-slider.js' %}"></script>
 	<script src="{% static 'js/testimonials.js' %}"></script>
 	<script src="{% static 'js/resume.js' %}"></script>
