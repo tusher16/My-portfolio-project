@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7ahi8*s=c)at5*4bh!pn*3jr4g)fwva=**j3pz41b&*j-v=1b&'
+#SECRET_KEY = 'django-insecure-7ahi8*s=c)at5*4bh!pn*3jr4g)fwva=**j3pz41b&*j-v=1b&'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['tusher16.herokuapp.com','127.0.0.1']
+
+#ALLOWED_HOSTS = ['tusher.site','www.tusher.site','127.0.0.1', 'http://192.168.178.76/', '192.168.178.76']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -126,6 +132,24 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Additional locations of static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+"""
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -142,6 +166,9 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-MEDIA_URL = '/images/'
+MEDIA_URL = 'images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+
+
+"""

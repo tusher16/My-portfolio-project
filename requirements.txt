@@ -8,10 +8,11 @@ django-storages==1.11.1
 gunicorn==20.1.0
 jmespath==0.10.0
 mysqlclient==2.0.3
-Pillow==8.3.1
+pillow==10.4.0
 python-dateutil==2.8.2
 pytz==2021.1
 s3transfer==0.4.2
+setuptools==75.1.0
 six==1.16.0
 sqlparse==0.4.1
 typing-extensions==3.10.0.0

@@ -1,0 +1,115 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django specific
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+db.sqlite3
+db.sqlite3-journal
+
+# Environment variables
+.env
+
+# Django migrations
+*/migrations/*.py
+*/migrations/*.pyc
+migrations/
+
+# Virtual environment
+venv/
+.venv/
+
+# VSCode settings
+.vscode/
+*.code-workspace
+
+# MacOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+
+# pytest
+.cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre
+.pyre/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Docker
+*.env
+**/Dockerfile
+docker-compose*.yml
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+*.cover
+*.py,cover
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# pyenv
+.python-version
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Distribution / Packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Static and Media
+staticfiles/
+media/
+
+# Security
+secrets.json
+
+# IDE Specific
+.idea/
+*.iml
+
+# Git-specific
+*.orig
